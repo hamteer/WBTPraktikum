@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Chat</title>
-    </head>
 
-    <body>
-        <h1>Chat with Tom</h1>
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
+</head>
 
-        <a href="friends.html"> &lt; Back </a> |
-        <a href="profile.html"> Profile </a>|
-        <a href="friends.html"> Remove Friend </a>
-        <!--Nachrichten-->
-        <p>Tom: Hallo, Welt!</p> 
-        <p>Jerry: Wie gehts?</p> 
+<body>
+    <h1>Chat with Tom</h1>
 
-        <input type="text" placeholder="New Message">
-        
-        <button>Send</button>
+    <a href="friends.html"> &lt; Back </a> |
+    <a href="profile.html"> Profile </a>|
+    <a href="friends.html" class="dangerLink"> Remove Friend </a>
+    <!--Nachrichten-->
+    <p>Tom: Hallo, Welt!</p>
+    <p>Jerry: Wie gehts?</p>
 
-    </body>
+    <form class="singleTextForm">
+        <input type="text" placeholder="New Message" class="formText">
+        <button type="submit" class="formButton">Send</button>
+    </form>
+
+</body>
+
 </html>

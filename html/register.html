@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Register</title>
-    </head>
 
-    <body>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
+</head>
 
-        <img src="../images/user.png"
-            alt="logo" width="85" height="85">
-
-        
-        <h1><b>Register yourself</b></h1>
-
+<body>
+    <img src="../images/user.png" alt="logo" width="85" height="85">
+    <h1><b>Register yourself</b></h1>
+    <form action="friends.html" method="post">
         <fieldset>
             <legend>Register</legend>
-            <form action="friends.html" method="post">
-                <p>
-                    <label for="username">Username</label> 
-                    <input id="username" type="text" name="user" required> 
-                </p>
-                <p>
-                    <label for="password">Password</label> 
-                    <input id="password" type="password" name="pwd" required>
-                </p>
-                <p>                    
-                    <label for="confirmPassword">Confirm Password</label> 
-                    <input id="confirmPassword" type="password" name="conPwd" required>
-                </p>
-            </form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="username">Username</label>
+                    </td>
+                    <td>
+                        <input id="username" type="text" name="user" placeholder="Username" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td>
+                        <input id="password" type="password" name="pwd" placeholder="Password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="confirmPassword">Confirm Password</label>
+                    </td>
+                    <td>
+                        <input id="confirmPassword" type="password" name="conPwd" placeholder="Confirm Password" required>
+                    </td>
+                </tr>
+            </table>
         </fieldset>
+    </form>
+    <button class="formButton" type="reset"><a href="login.html" class="buttonLink">Cancel</a></button>
+    <button class="submitButton" type="submit"><a href="friends.html" class="buttonLink">Create Account</a></button>
 
-        <a href="login.html">
-            <button type="reset">
-                Cancel
-            </button>
-        </a>
+</body>
 
-        <a href="friends.html">
-            <button type="submit">
-                Create Account
-            </button>
-        </a>
-    </body>
 </html>

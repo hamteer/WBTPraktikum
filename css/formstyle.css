@@ -1,0 +1,56 @@
+.formButton {
+    background-color: lightgray;
+    color: white;
+    border: none;
+    padding: 10px 32px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.submitButton {
+    background-color: rgb(50, 50, 255);
+    color: white;
+    border: none; 
+    padding: 10px 32px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.formText {
+    padding: 8px;
+    font-size: 18px;
+}
+
+/* only the two forms in chat.html and friends.html */
+.singleTextForm > .formText {
+    margin-right: 20px;
+}
+
+fieldset {
+    border-style: dotted;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+form > fieldset > table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+}
+
+select {
+    width: 177px;
+}
+
+textarea {
+    width: 100%;
+}
+
+dt {
+    font-weight: bold;
+}
+
+
+
+
+
