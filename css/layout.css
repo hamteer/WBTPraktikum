@@ -1,0 +1,22 @@
+h1, h2, p, div, ul, ol, img, table {
+    margin: 1em auto;
+    width: 600px;
+    display: block;
+}
+
+fieldset {
+    margin: 1em auto;
+    width: 1000px;
+    display: block;
+}
+
+a {
+    margin: auto;
+    width: 600px;
+    display: inline;
+}
+
+div {
+    margin: auto;
+    width: 600px;
+}
