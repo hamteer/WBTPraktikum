@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settings</title>
+        <link rel="stylesheet" href="layout.css">
+        <link rel="stylesheet" href="formatierung.css">
+    </head>
+    <body>
+        <h1>Profile Settings</h1>
+        <p>
+            <fieldset>
+                <legend>Base Data</legend>  <br>
+                First Name<input type="text" placeholder="Your name"><br>
+                Last Name<input type="text" placeholder="Your surname"><br>
+                Coffee or Tea?
+                <select name="drink" id="drink">
+                    <option value="Neither nor">Neither nor</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Tea">Tea</option>
+                </select>
+            </fieldset>
+        </p>
+
+        <p>
+            <fieldset>
+                <legend>Tell Something About You</legend> 
+                <textarea name="Comment" id="Comment" cols="100" rows="10" placeholder="Leave a comment here"></textarea>
+            </fieldset>
+        </p>
+
+        <p>
+            <fieldset>
+                <legend>Prefered Chat Layout</legend>  <br>
+                <input type="radio" name="username" value="oneliner"> Username and message in one line <br> <br>
+                <input type="radio" name="username" value="seperated"> Username and message in seperated line <br> <br>
+            </fieldset>
+
+            <div>
+            <a href="friends.html">
+                <button style="background-color: grey;">
+                    cancel
+                </button>
+            </a>
+            <a href="settings.html">
+                <button style="background-color: dodgerblue;">
+                    save
+                </button>
+            </a>
+          </div>
+
+        </p>
+        
+        
+
+    </body>
+</html>
