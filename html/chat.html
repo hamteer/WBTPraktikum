@@ -3,8 +3,14 @@
 
 <head>
     <title>Chat</title>
+    <meta name="viewport" charset="UTF-8"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
     <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/format.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
 </head>
 
 <body>
@@ -13,10 +19,20 @@
     <a href="friends.html"> &lt; Back </a> |
     <a href="profile.html"> Profile </a>|
     <a href="friends.html" class="dangerLink"> Remove Friend </a>
-    <!--Nachrichten-->
-    <p>Tom: Hallo, Welt!</p>
-    <p>Jerry: Wie gehts?</p>
 
+    <!--Nachrichten-->
+    <hr>
+    <fieldset class="containerBox">
+        <div>
+            <div class="message">Tom: Hallo, Welt!</div>
+            <div class="timestamp">19:43:01</div>
+        </div>
+        <div>
+            <div class="message">Jerry: Wie gehts?</div>
+            <div class="timestamp">19:57:20</div>
+        </div>
+    </fieldset>
+    <hr>
     <form class="singleTextForm">
         <input type="text" placeholder="New Message" class="formText">
         <button type="submit" class="formButton">Send</button>

@@ -3,14 +3,22 @@
 
 <head>
     <title>Register</title>
+    <meta name="viewport" charset="UTF-8"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
     <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/format.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body>
-    <img src="../images/user.png" alt="logo" width="85" height="85">
-    <h1><b>Register yourself</b></h1>
-    <form action="friends.html" method="post">
+    <div class="centerBox">
+        <img src="../images/user.png" alt="logo" width="85" height="85">
+    </div>
+    <h1>Register yourself</h1>
+    <form action="friends.html" method="post" class="logRegBox">
         <fieldset>
             <legend>Register</legend>
             <table>
@@ -41,9 +49,10 @@
             </table>
         </fieldset>
     </form>
-    <button class="formButton" type="reset"><a href="login.html" class="buttonLink">Cancel</a></button>
-    <button class="submitButton" type="submit"><a href="friends.html" class="buttonLink">Create Account</a></button>
-
+    <div class="centerBox">
+        <button class="formButton" type="reset"><a href="login.html" class="buttonLink">Cancel</a></button>
+        <button class="submitButton" type="submit"><a href="friends.html" class="buttonLink">Create Account</a></button>
+    </div>
 </body>
 
 </html>
