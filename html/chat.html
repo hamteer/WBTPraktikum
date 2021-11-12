@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat</title>
+    <meta name="viewport" charset="UTF-8"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/format.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+    <h1>Chat with Tom</h1>
+
+    <a href="friends.html"> &lt; Back </a> |
+    <a href="profile.html"> Profile </a>|
+    <a href="friends.html" class="dangerLink"> Remove Friend </a>
+
+    <!--Nachrichten-->
+    <hr>
+    <fieldset class="containerBox">
+        <ul class="chat">
+            <li class="message">
+                <p class="messageContainer">
+                    <span class="chatName">
+                        Tom:
+                    </span>
+                    <span class="chatMessage">
+                        Hallo Welt!
+                    </span>
+                    <span class="chatTimestamp">
+                        19:35:21
+                    </span>
+                </p>
+            </li>
+
+            <li class="message">
+                <p class="messageContainer">
+                    <span class="chatName">
+                        Jerry:
+                    </span>
+                    <span class="chatMessage">
+                        Hallo Tom!
+                    </span>
+                    <span class="chatTimestamp">
+                        19:42:05
+                    </span>
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+    <hr>
+    <form class="singleTextForm">
+        <input type="text" placeholder="New Message" class="formText">
+        <button type="submit" class="formButton">Send</button>
+    </form>
+
+</body>
+
+</html>
