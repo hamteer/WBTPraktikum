@@ -3,17 +3,23 @@
 
 <head>
     <title>Friends</title>
-    <meta name="viewport" charset="UTF-8"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" type="text/css" href="../css/linkstyle.css">
     <link rel="stylesheet" type="text/css" href="../css/formstyle.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/format.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/format.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+
+    <script src="..\js\prefix-search.js"></script>
+    <script>
+        window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2NjU0MzMwfQ.t0AIqQIzxGgIqhPMPUCIFZiiTQE1BpPJEkEe8YsmxSY";
+        window.chatCollectionId = "b5eb31e8-e269-4c8a-9c86-e99c3a992f51";
+        window.chatServer = "https://online-lectures-cs.thi.de/chat";
+    </script>
 </head>
 
-<body>
+<body onload="loadUsers()">
     <h1>Friends</h1>
     <p>
         <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
@@ -73,8 +79,9 @@
     </ol>
     <hr>
     <form class="singleTextForm">
-        <input type="text" id="addFriendFeld" placeholder="Add Friend to List" class="formText">
+        <input type="text" id="addFriendFeld" placeholder="Add Friend to List" list="userList" class="formText" autocomplete="off">
         <button type="submit" class="formButton">Add</button>
+        <datalist id="userList"></datalist>
     </form>
 </body>
 
