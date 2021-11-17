@@ -137,3 +137,14 @@ div.chatSymbol {
     width: 18px;
 }
 */
+
+.inputIncorrect {
+    border:red solid 2px;
+    outline: red;
+}
+
+.inputCorrect {
+    border:limegreen solid 2px;
+    outline: limegreen;
+}
+
