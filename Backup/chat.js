@@ -42,7 +42,7 @@ function createMessageElementinChat(msgTxt, sender, time) {
 // Data-section: get, process and send data
 //
 function getAndProcessData() {
-    var xmlhttp = new XMLHttpRequest();
+    let xmlhttp = new XMLHttpRequest();
     // get data
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
