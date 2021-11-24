@@ -1,1 +1,43 @@
-<h1>RegisterComponent works!</h1>
+<body>
+    <div class="centerBox">
+        <img src="..\..\..\assets\images\user.png" alt="logo" width="85" height="85">
+    </div>
+    <h1>Register yourself</h1>
+    <form method="post" class="logRegBox">  
+        <fieldset>
+            <legend>Register</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="username">Username</label>
+                    </td>
+                    <td>
+                        <input id="username" type="text" name="user" placeholder="Username" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td>
+                        <input id="password" type="password" name="pwd" placeholder="Password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="confirmPassword">Confirm Password</label>
+                    </td>
+                    <td>
+                        <input id="confirmPassword" type="password" name="conPwd" placeholder="Confirm Password" required>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div class="centerBox">
+        <button class="formButton" type="reset"><a [routerLink]="['/login']" class="buttonLink">Cancel</a></button>
+        <button class="submitButton" type="submit"><a [routerLink]="['/friends']">Create account</a></button>
+    </div>
+    
+    <script src="../js/registerCheck.js"></script>
+</body>

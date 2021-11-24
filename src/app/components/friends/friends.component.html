@@ -1,1 +1,65 @@
-<h1>FriendsComponent works!</h1>
+<body onload="loadUsers()">
+    <h1>Friends</h1>
+    <p>
+        <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
+    </p>
+    <hr>
+    <div class="containerBox">
+        <ul class="friendsList">
+            <li class="friend">
+                <p class="friendContainer">
+                    <span class="friendName">
+                        <a [routerLink]="['/chat']">Tom</a>
+                    </span>
+                    <span class="newMessages">
+                        3
+                    </span>
+                </p>
+            </li>
+
+            <li class="friend">
+                <p class="friendContainer">
+                    <span class="friendName">
+                        <a [routerLink]="['/chat']">Marvin</a>
+                    </span>
+                    <span class="newMessages">
+                        1
+                    </span>
+                </p>
+            </li>
+
+            <li class="friend">
+                <p class="friendContainer">
+                    <span class="friendName">
+                        <a [routerLink]="['/chat']">Tick</a>
+                    </span>
+                    <span class="newMessages">
+                        
+                    </span>
+                </p>
+            </li>
+
+            <li class="friend">
+                <p class="friendContainer">
+                    <span class="friendName">
+                        <a [routerLink]="['/chat']">Trick</a>
+                    </span>
+                    <span class="newMessages">
+                        
+                    </span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <h2>New Requests</h2>
+    <ol>
+        <li><a [routerLink]="['/chat']">Friend request from <strong>Track</strong></a></li>
+    </ol>
+    <hr>
+    <form class="singleTextForm">
+        <input type="text" id="addFriendFeld" placeholder="Add Friend to List" list="userList" class="formText" autocomplete="off">
+        <button type="submit" class="formButton">Add</button>
+        <datalist id="userList"></datalist>
+    </form>
+</body>

@@ -1,5 +1,25 @@
-<h1>ChatComponent works!</h1>
+<body>
+    <h1>Chat with Tom</h1>
+    <a [routerLink]="['/friends']">&lt; Back</a> |
+    <a [routerLink]="['/profile']">Profile</a> |
+    <a [routerLink]="['/friends']" class="dangerLink">Remove Friend</a>
 
+    <!--Nachrichten-->
+    <hr>
+    <fieldset class="containerBox chatContainer">
+        <ul class="chat" id="chatList">
+        </ul>
+    </fieldset>
+    <hr>
+    <!--form class="singleTextForm"-->
+        <input type="text" placeholder="New Message" class="formText" id="inputMsg">
+        <button class="formButton" id="sendBtn">Send</button> <br>
+    <!--/form-->
+    <script type="text/javascript" src="../js/chat.js"></script>
+</body>
+
+
+<!-- default code -->
 <div #messagesDiv>
     <!-- hier kommen die Nachrichten rein -->
     Nachricht 1

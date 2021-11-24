@@ -1,1 +1,31 @@
-<h1>ProfileComponent works!</h1>
+<body>
+    <h2>Profile of Tom</h2>
+    <p>
+        <a [routerLink]="['/chat']">Back to chat</a> | <a [routerLink]="['/friends']" class="dangerLink">Remove friend</a>
+    </p>
+
+    <div class="profile">
+        <div class="profilePic">
+            <img src="..\..\..\assets\images\profile.png" alt="profile.png">
+        </div>
+
+        <fieldset class="profileBox">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                officia deserunt mollit anim id est laborum.
+            </p>
+            <dl>
+                <dt>Coffee or Tea?</dt>
+                <dd>Tea</dd>
+                <dt>Name</dt>
+                <dd>Thomas</dd>
+            </dl>
+        </fieldset>
+    </div>
+
+</body>
