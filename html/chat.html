@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/format.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <script type="text/javascript" src="../js/chat.js"></script>
+    
 </head>
 
 <body>
@@ -22,57 +22,16 @@
 
     <!--Nachrichten-->
     <hr>
-    <fieldset class="containerBox">
-        <ul class="chat">
-            <li class="message">
-                <p class="messageContainer">
-                    <span class="chatName" id="thirdFrom">
-                        from 3
-                    </span>
-                    <span class="chatMessage" id="thirdTxt">
-                        test 3
-                    </span>
-                    <span class="chatTimestamp" id="thirdTime">
-                        time 3
-                    </span>
-                </p>
-            </li>
-        
-            <li class="message">
-                <p class="messageContainer">
-                    <span class="chatName" id="secondFrom">
-                        from 2
-                    </span>
-                    <span class="chatMessage" id="secondTxt">
-                        test 2
-                    </span>
-                    <span class="chatTimestamp" id="secondTime">
-                        time 2
-                    </span>
-                </p>
-            </li>
-
-            <li class="message">
-                <p class="messageContainer">
-                    <span class="chatName" id="firstFrom">
-                        from 1
-                    </span>
-                    <span class="chatMessage" id="firstTxt">
-                        test 1
-                    </span>
-                    <span class="chatTimestamp" id="firstTime">
-                        time 1
-                    </span>
-                </p>
-            </li>
+    <fieldset class="containerBox chatContainer">
+        <ul class="chat" id="chatList">
         </ul>
     </fieldset>
     <hr>
     <!--form class="singleTextForm"-->
-        <input type="text" placeholder="New Message" class="formText" id="eg">
-        <button class="formButton" onclick="handleKnopf()">Send</button> <br>
+        <input type="text" placeholder="New Message" class="formText" id="inputMsg">
+        <button class="formButton" id="sendBtn">Send</button> <br>
     <!--/form-->
-
+    <script type="text/javascript" src="../js/chat.js"></script>
 </body>
 
 </html>

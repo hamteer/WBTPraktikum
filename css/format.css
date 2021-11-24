@@ -75,6 +75,17 @@ div.timestamp {
 ul.chat {
     list-style: none;
     padding: 0px;
+
+}
+
+.chatContainer {
+    max-height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth; 
+    /*Scrollbar starts at the bottom so u can se the newest msg´s*/
+    display: flex;
+    flex-direction: column-reverse;
+    
 }
 
 .messageContainer {
