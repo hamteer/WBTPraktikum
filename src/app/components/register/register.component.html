@@ -1,9 +1,9 @@
 <body>
     <div class="centerBox">
-        <img src="..\..\..\assets\images\user.png" alt="logo" width="85" height="85">
+        <img src="../../../assets/images/user.png" alt="logo" width="85" height="85">
     </div>
     <h1>Register yourself</h1>
-    <form method="post" class="logRegBox">  
+    <form action="friends.html" method="post" class="logRegBox">
         <fieldset>
             <legend>Register</legend>
             <table>
@@ -12,32 +12,56 @@
                         <label for="username">Username</label>
                     </td>
                     <td>
-                        <input id="username" type="text" name="user" placeholder="Username" required>
+                        <input id="username" type="text" name="user" placeholder="Username" [(ngModel)]="username" (keyup)="checkUsername()" required>
                     </td>
+
                 </tr>
+            </table>
+
+            <div class="inputIncorrect" [hidden]="!usernameExists">                       
+                Username already used!
+            </div>
+            <div class="inputIncorrect" [hidden]="!usernameTooShort || pristineUser">
+                Username too short (min. 8 character)
+            </div>
+
+            <table>
                 <tr>
                     <td>
                         <label for="password">Password</label>
                     </td>
                     <td>
-                        <input id="password" type="password" name="pwd" placeholder="Password" required>
+                        <input id="password" type="password" name="pwd" placeholder="Password" [(ngModel)]="password" (keyup)="checkPassword()"  required>
                     </td>
+
                 </tr>
+            </table>
+
+            <div class="inputIncorrect" [hidden]="!passwordTooShort || pristinePassword">
+                Password too short (min. 8 character)
+            </div>
+
+            <table>
                 <tr>
                     <td>
                         <label for="confirmPassword">Confirm Password</label>
                     </td>
                     <td>
-                        <input id="confirmPassword" type="password" name="conPwd" placeholder="Confirm Password" required>
+                        <input id="confirmPassword" type="password" name="conPwd" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (keyup)="checkConfirmation()" required>
                     </td>
                 </tr>
             </table>
+            <div class="inputIncorrect" [hidden]="confirmationOk">
+                Passwords do not match!
+            </div>
         </fieldset>
     </form>
     <div class="centerBox">
-        <button class="formButton" type="reset"><a [routerLink]="['/login']" class="buttonLink">Cancel</a></button>
-        <button class="submitButton" type="submit"><a [routerLink]="['/friends']">Create account</a></button>
-    </div>
-    
-    <script src="../js/registerCheck.js"></script>
+        <button class="formButton" type="reset" (click)="backToLogin()">
+            Cancel
+        </button>
+        <button [disabled]="!usernameOk || !passwordOk" class="submitButton" type="submit" (click)="registerUser()">
+            Create Account
+        </button>
+    </div>    
 </body>

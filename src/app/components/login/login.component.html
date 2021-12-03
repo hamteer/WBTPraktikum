@@ -1,19 +1,21 @@
+
 <body>
     <div class="centerBox">
-        <img src="..\..\..\assets\images\chat.png" alt="chat.png" width='90' height='90'>
+        <img src="../../../assets/images/chat.png" alt="chat.png" width='90' height='90'>
     </div>
     <h1>Please sign in</h1>
-
-    <form method="GET" class="dottedForm logRegBox">
+    <div class="authentication" [hidden]="!authenticationFailed">Authentication failed</div>
+    <form class="dottedForm logRegBox">
         <fieldset>
             <legend>Login</legend>
+            
             <table>
                 <tr>
                     <td>
                         <label for="usernameFeld">Username</label>
                     </td>
                     <td>
-                        <input type="text" id="usernameFeld" placeholder="Username" required>
+                        <input type="text" id="usernameFeld" placeholder="Username"  required [(ngModel)]='user' [ngModelOptions]="{standalone: true}">
                     </td>
                 </tr>
                 <tr>
@@ -21,14 +23,18 @@
                         <label for="passwordFeld">Password</label>
                     </td>
                     <td>
-                        <input type="password" id="passwordFeld" placeholder="Password" required>
+                        <input type="password" id="passwordFeld" placeholder="Password" required [(ngModel)]='pw' [ngModelOptions]="{standalone: true}">
                     </td>
                 </tr>
             </table>
         </fieldset>
         <div class="centerBox">
-            <button class="formButton"><a [routerLink]="['/chat']" class="buttonLink">Register</a></button>
-            <button class="submitButton" type="submit"><a [routerLink]="['/friends']">Login</a></button>
+            <button class="formButton" (click)="goToRegister()">
+                Register
+            </button>
+            <button class="submitButton" type="submit" (click)="loginUser()">
+                Login
+            </button>
         </div>
     </form>
 

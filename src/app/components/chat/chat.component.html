@@ -1,26 +1,26 @@
 <body>
-    <h1>Chat with Tom</h1>
-    <a [routerLink]="['/friends']">&lt; Back</a> |
-    <a [routerLink]="['/profile']">Profile</a> |
-    <a [routerLink]="['/friends']" class="dangerLink">Remove Friend</a>
+<h1>Chat with Tom</h1>
+<a href="friends.html"> &lt; Back </a> |
+<a href="profile.html"> Profile </a>|
+<a href="friends.html" class="dangerLink"> Remove Friend </a>
 
-    <!--Nachrichten-->
-    <hr>
-    <fieldset class="containerBox chatContainer">
-        <ul class="chat" id="chatList">
-        </ul>
-    </fieldset>
-    <hr>
-    <!--form class="singleTextForm"-->
-        <input type="text" placeholder="New Message" class="formText" id="inputMsg">
-        <button class="formButton" id="sendBtn">Send</button> <br>
-    <!--/form-->
-    <script type="text/javascript" src="../js/chat.js"></script>
+<!--Nachrichten-->
+<hr>
+<fieldset class="containerBox chatContainer">
+    <ul class="chat" id="chatList">
+        <li class="message">
+            <p class="messageContainer">
+                <span class="chatName"></span>
+                <span class="chatMessage"></span>
+                <span class="chatTimestamp"></span>
+            </p>
+        </li>
+    </ul>
+</fieldset>
+<hr>
+<input type="text" placeholder="New Message" class="formText" id="inputMsg">
+<button class="formButton" id="sendBtn">
+    Send
+</button> 
+<br>
 </body>
-
-
-<!-- default code -->
-<div #messagesDiv>
-    <!-- hier kommen die Nachrichten rein -->
-    Nachricht 1
-</div>
