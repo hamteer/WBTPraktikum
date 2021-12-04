@@ -35,9 +35,6 @@ export class LoginComponent implements OnInit {
                 } else {
                     console.log(" nicht erfolgreich angemeldet");
                     this.authenticationFailed = true;
-                    setInterval(() => {
-                        this.authenticationFailed = false;
-                    }, 3000);
                 }
             });
         }
