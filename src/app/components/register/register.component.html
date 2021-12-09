@@ -3,41 +3,40 @@
         <img src="../../../assets/images/user.png" alt="logo" width="85" height="85">
     </div>
     <h1>Register yourself</h1>
-    <form action="friends.html" method="post" class="logRegBox">
+    <form action="friends.html" method="post" class="logRegBox" #register="ngForm">
         <fieldset>
             <legend>Register</legend>
             <table>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="username">Username</label>
                     </td>
                     <td>
-                        <input id="username" type="text" name="user" placeholder="Username" [(ngModel)]="username" (keyup)="checkUsername()" required>
+                        <input #userinput="ngModel" minlength="3" id="username" type="text" name="user" placeholder="Username" [(ngModel)]="username" (keyup)="checkUsername()" required>
                     </td>
-
                 </tr>
             </table>
 
-            <div class="inputIncorrect" [hidden]="!usernameExists">                       
+            <div class="inputIncorrect" [hidden]="userinput.pristine || !usernameExists">                       
                 Username already used!
             </div>
-            <div class="inputIncorrect" [hidden]="!usernameTooShort || pristineUser">
+            <div class="inputIncorrect" [hidden]="!userinput.errors?.['minlength'] || userinput.pristine">
                 Username too short (min. 3 character)
             </div>
 
             <table>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="password">Password</label>
                     </td>
                     <td>
-                        <input id="password" type="password" name="pwd" placeholder="Password" [(ngModel)]="password" (keyup)="checkPassword()"  required>
+                        <input #pwdinput="ngModel" minlength="8" id="password" type="password" name="pwd" placeholder="Password" [(ngModel)]="password" (keyup)="checkPassword()"  required>
                     </td>
 
                 </tr>
             </table>
 
-            <div class="inputIncorrect" [hidden]="!passwordTooShort || pristinePassword">
+            <div class="inputIncorrect" [hidden]="!pwdinput.errors?.['minlength'] || pwdinput.pristine">
                 Password too short (min. 8 character)
             </div>
 

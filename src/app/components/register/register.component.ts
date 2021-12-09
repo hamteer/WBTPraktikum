@@ -14,13 +14,9 @@ export class RegisterComponent implements OnInit {
     // for disabling and showing errors 
     // Username
     public usernameOk = false;
-    public usernameTooShort = true;
     public usernameExists = false;
-    public pristineUser = true;
     // Password
     public passwordOk = false;
-    public passwordTooShort = true;
-    public pristinePassword = true;
     // Password confirmation
     public confirmationOk = true;
 
@@ -31,40 +27,26 @@ export class RegisterComponent implements OnInit {
     }
 
     public checkUsername() {
-        this.pristineUser = false;
-        if (this.username.length < 3) {
-            this.usernameTooShort = true;
-            this.usernameExists = false;
-        } else {
-            this.usernameTooShort = false;
-            this.backendService.userExists(this.username)
-                .then((ok: boolean) => {
-                    if (ok) {
-                        this.usernameExists = true;
+        this.backendService.userExists(this.username)
+            .then((ok: boolean) => {
+                if (ok) {
+                    // User already exists
+                    this.usernameOk = false;
+                    this.usernameExists = true;
+                } else {
+                    // User dont exists, check username length
+                    this.usernameExists = false;
+                    if (this.username.length < 3) {
+                        this.usernameOk = false;
                     } else {
-                        this.usernameExists = false;
-                        // enable register button
-                        if (!this.usernameExists && !this.usernameTooShort) {
-                            this.usernameOk = true;
-                        } else {
-                            this.usernameOk = false;
-                        }
+                        this.usernameOk = true;
                     }
-                });
-        }
-
-
+                }
+            });
     }
 
     public checkPassword() {
-        this.pristinePassword = false;
-        if (this.password.length < 8) {
-            this.passwordTooShort = true;
-        } else {
-            this.passwordTooShort = false;
-        }
-
-        if (this.confirmPassword.length != 0) {
+        if (this.confirmPassword.length > 8) {
             this.checkConfirmation();
         }
     }
@@ -90,6 +72,8 @@ export class RegisterComponent implements OnInit {
                     console.log("registration failed!");
                 }
             });
+        } else {
+            console.log("registration failed, check input");            
         }
 
     }
