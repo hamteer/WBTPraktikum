@@ -89,6 +89,15 @@ ul.friendsList {
     margin-right: 20px;
 }
 
+.friendButton {
+    background-color: rgb(184, 184, 184);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+
 @media (max-width: 900px) {
     .formButton, .formText {
         box-sizing: border-box;

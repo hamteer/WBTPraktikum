@@ -1,19 +1,14 @@
 <body>
-    <h1>Friends</h1>
+    <h1>{{ this.currentUser.username }}'s Friends</h1>
     <p>
-        <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
+        <a [routerLink]="['/logout']">&lt; Logout</a> | <a [routerLink]="['/settings']">Settings</a>    
     </p>
     <hr>
     <div class="containerBox containerFriends">
         <ul class="friendsList">
             <li class="friend">
-                <p class="friendContainer">
-                    <span class="friendName">
-                        Tom
-                    </span>
-                    <span class="newMessages">
-                        3
-                    </span>
+                <p *ngFor="let f of this.friendArray" class="friendContainer">
+                    <a [routerLink]="['/chat']"><span class="friendName">{{ f.username }}</span> <span class="newMessages"> {{ f.unreadMessages }} </span></a>
                 </p>
             </li>
         </ul>
@@ -21,12 +16,15 @@
     <hr>
     <h2>New Requests</h2>
     <ol>
-        <li><a href="chat.html">Friend request from <strong>Track</strong></a></li>
+        <li *ngFor="let f of this.requests">
+            <a [routerLink]="['/chat']">Friend request from <strong>{{ f.username }}</strong></a>
+            <button class="friendButton" (click)="acceptFriend(f.username)">Accept</button>
+            <button class="friendButton" (click)="dismissFriend(f.username)">Decline</button>
+        </li>
     </ol>
     <hr>
-    <input type="text" id="addFriendFeld" placeholder="Add Friend to List" list="userList" class="formText"
-        autocomplete="off">
-    <button type="submit" class="formButton">
+    <input type="text" id="addFriendFeld" placeholder="Add Friend to List" list="userList" class="formText">
+    <button type="submit" class="formButton" (click)="sendFriendRequest()">
         Add
     </button>
     <datalist id="userList"></datalist>
