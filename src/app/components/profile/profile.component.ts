@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
     lookedAtUser: User = new User;
     unknownProfile: unknown;
     lookedAtProfile: Profile = new Profile("", "", "", "", "");
+    coffeeOrTea: string = "";
 
     public constructor(private backendService : BackendService, private router: Router, private context : ContextService) { 
     }
@@ -42,6 +43,24 @@ export class ProfileComponent implements OnInit {
                     this.lookedAtUser = user;
                     this.unknownProfile = <unknown> user;
                     this.lookedAtProfile = <Profile> this.unknownProfile;
+                    
+                    switch(Number(this.lookedAtProfile.coffeeOrTea)) {
+                        case (1):
+                            console.log("case1");
+                            this.coffeeOrTea = "Neither nor";
+                            break;
+                        case (2):
+                            console.log("case2");
+                            this.coffeeOrTea = "Coffee";
+                            break;
+                        case (3):
+                            console.log("case3");
+                            this.coffeeOrTea = "Tea";
+                            break;
+                        default:
+                            break;            
+                    }
+
                 }
             })
         
