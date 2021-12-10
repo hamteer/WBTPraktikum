@@ -7,7 +7,7 @@
     <div class="containerBox containerFriends">
         <ul class="friendsList">
             <li class="friend">
-                <p *ngFor="let f of this.friendArray" class="friendContainer">
+                <p *ngFor="let f of this.displayedFriendArray" class="friendContainer">
                     <a [routerLink]="['/chat']"><span class="friendName">{{ f.username }}</span> <span class="newMessages"> {{ f.unreadMessages }} </span></a>
                 </p>
             </li>
@@ -16,16 +16,15 @@
     <hr>
     <h2>New Requests</h2>
     <ol>
-        <li *ngFor="let f of this.requests">
+        <li *ngFor="let f of this.displayedRequests">
             <a [routerLink]="['/chat']">Friend request from <strong>{{ f.username }}</strong></a>
             <button class="friendButton" (click)="acceptFriend(f.username)">Accept</button>
             <button class="friendButton" (click)="dismissFriend(f.username)">Decline</button>
         </li>
     </ol>
     <hr>
-    <input type="text" id="addFriendFeld" placeholder="Add Friend to List" list="userList" class="formText">
+    <input type="text" id="addFriendFeld" placeholder="Add Friend to List" class="formText" [(ngModel)]='requestUsername'>
     <button type="submit" class="formButton" (click)="sendFriendRequest()">
         Add
     </button>
-    <datalist id="userList"></datalist>
 </body>

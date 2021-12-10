@@ -14,8 +14,12 @@ export class FriendsComponent implements OnInit {
     currentUser: User = new User;
     friendUser: Friend = new Friend("", "", 0);
     username: string = "";
-    friendArray: Friend[] = [];
-    requests: Friend[] = [];
+
+    // arrays for Friends and friend requests
+    loadedFriendsArray: Friend[] = [];
+    displayedFriendArray: Friend[] = [];
+    displayedRequests: Friend[] = [];
+
     requestUsername: string = ""; 
 
     public constructor(private backendService: BackendService, private intervalService: IntervalService, private router: Router) {
@@ -36,33 +40,27 @@ export class FriendsComponent implements OnInit {
         // load friends and requests
         this.loadFriendsAndRequests();
 
+        this.setDisplayedArrays();
+
         // start repeated checking of friends, unread messages and requests
         this.intervalService.setInterval("FriendsComponent", () => this.friendsAndRequestsCheck());
-
-        // fill user search datalist with all existing users - TODO!
-        
-        
     }    
 
     public loadFriendsAndRequests() {
-        // load friend array of current user
+        // load friend array of current user and set unread messages to 0
         this.backendService.loadFriends()
-            .then((loadedFriendsArray) => {
+            .then((FriendsArray) => {
                 //console.log(loadedFriendsArray);
-                for (let f of loadedFriendsArray) {
-                    if(f.status == 'accepted' ) {        // check: friend is accepted
-                        f.unreadMessages = 0;
-                        this.friendArray.push(f);
-                    } else {
-                        this.requests.push(f)
-                    }
+                this.loadedFriendsArray = FriendsArray;
+                for (let f of this.loadedFriendsArray) {
+                    f.unreadMessages = 0;
                 }
             })
 
         // load unread messages for friends
         this.backendService.unreadMessageCounts()
             .then((unreadMsgMap) => {
-                for(let f of this.friendArray) {
+                for(let f of this.loadedFriendsArray) {
                     let x : number | undefined = unreadMsgMap.get(f.username);
                     if (typeof(x) != 'undefined') {
                         f.unreadMessages = x;
@@ -74,40 +72,75 @@ export class FriendsComponent implements OnInit {
         //console.log(this.requests);
     }
 
+    public setDisplayedArrays() {
+        this.displayedFriendArray = [];
+        this.displayedRequests = [];
+        // set values for displayed arrays
+        for (let f of this.loadedFriendsArray) {
+            if (f.status == 'accepted') {
+                this.displayedFriendArray.push(f);
+            } else {
+                this.displayedRequests.push(f);
+            }
+        }
+    }
+
     public friendsAndRequestsCheck() {
         // has anything changed? if yes, reload friends and requests!
+        // first, reload friends and messages
+        // then, check if array size, usernames and unread messages are unchanged
+        //  -> if not, set display values
         this.backendService.loadFriends()
-            .then((loadedFriendsArray) => {
-                if (loadedFriendsArray.length == this.friendArray.length + this.requests.length) {
-                    for(let f = 0; f < this.friendArray.length; f++) {
-                        if (loadedFriendsArray[f].username != this.friendArray[f].username) {
-                            this.loadFriendsAndRequests();
-                        }
-                    } 
+            .then((newFriendsArray) => {
+                if (newFriendsArray.length == this.loadedFriendsArray.length) {
                     console.log("no changes in friends and/or requests recognized.");
+                } else {
+                    this.loadFriendsAndRequests();
+                    this.setDisplayedArrays();
+                    console.log("changes in array length detected - arrays overwritten")
+                }
+
+                // check if usernames and status are consistent with before
+                for (let f = 0; f < newFriendsArray.length; f++) {
+                    if (newFriendsArray[f].username != this.loadedFriendsArray[f].username || newFriendsArray[f].status != this.loadedFriendsArray[f].status) {
+                        this.loadFriendsAndRequests();
+                        this.setDisplayedArrays();
+                        console.log("changes in usernames or status detected - arrays overwritten")
+                    }
+                }
+            })
+
+        // check if new unread messages have arrived
+        this.backendService.unreadMessageCounts() 
+            .then((loadedMsgMap) => {
+                for (let f of this.loadedFriendsArray) {
+                    if (f.unreadMessages != loadedMsgMap.get(f.username)) {
+                        this.loadFriendsAndRequests();
+                        this.setDisplayedArrays();
+                        console.log("changes in unread messages detected - arrays overwritten")
+                    }
                 }
             })
     }
 
     public acceptFriend(username: string) {
-        this.backendService.acceptFriendRequest(username);  // TODO!
+        this.backendService.acceptFriendRequest(username); 
     }
 
     public dismissFriend(username: string) {
-        this.backendService.dismissFriendRequest(username); // TODO!
+        this.backendService.dismissFriendRequest(username); 
     }
 
     public sendFriendRequest() {
-        this.backendService.friendRequest(this.requestUsername) // TODO!
+        console.log(this.requestUsername);
+        this.backendService.userExists(this.requestUsername)
+            .then((ok) => {
+                if (ok) {
+                    console.log("user exists, sending friend request")
+                    this.backendService.friendRequest(this.requestUsername);
+                } else {
+                    console.log("user doesn't exist!")
+                }
+            })
     }
-
-
-
-    // TODO:
-    //  - fill Datalist with existing users from server ( --> how to get all users?? <-- )
-    //  - get friendRequest username from HTML
-    // einmal laden und dann nur prüfen, ob änderungen aufgetreten -> hat das funktioniert?
-
-    // --> testen!!!
-
 }
