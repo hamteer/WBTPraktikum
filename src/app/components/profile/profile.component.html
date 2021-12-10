@@ -1,7 +1,7 @@
 <body>
-    <h2>Profile of Tom</h2>
+    <h2>Profile of {{ this.lookedAtUser.username }}</h2>
     <p>
-        <a href="chat.html">&lt; Back to Chat</a> | <a href="friends.html" class="dangerLink">Remove Friend</a>
+        <a [routerLink]="['/chat']">&lt; Back to Chat</a> | <a class="dangerLink" (click)="removeFriend()">Remove Friend</a>
     </p>
 
     <div class="profile">
@@ -12,20 +12,14 @@
 
         <fieldset class="profileBox">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                officia deserunt mollit anim id est laborum.
+                {{ this.lookedAtProfile.description }}
             </p>
             <div>
                 <dl>
                     <dt>Coffee or Tea?</dt>
-                    <dd>Tea</dd>
+                    <dd>{{ this.lookedAtProfile.coffeeOrTea }}</dd>
                     <dt>Name</dt>
-                    <dd>Thomas</dd>
+                    <dd>{{ this.lookedAtProfile.firstName }} {{ this.lookedAtProfile.lastName }}</dd>
                 </dl>
             </div>
         </fieldset>

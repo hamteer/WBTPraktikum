@@ -2,6 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/services/backend.service';
 import { IntervalService } from 'src/app/services/interval.service';
+import { ContextService } from 'src/app/services/context.service';
 import { User } from 'src/app/models/User';
 import { Friend } from 'src/app/models/Friend';
 
@@ -21,8 +22,9 @@ export class FriendsComponent implements OnInit {
     displayedRequests: Friend[] = [];
 
     requestUsername: string = ""; 
+    chatUsername : string = "";
 
-    public constructor(private backendService: BackendService, private intervalService: IntervalService, private router: Router) {
+    public constructor(private backendService: BackendService, private intervalService: IntervalService, private router: Router, private contextService : ContextService) {
     }
 
     public ngOnInit(): void {
@@ -145,6 +147,12 @@ export class FriendsComponent implements OnInit {
     }
 
     public stopLoop() {
+        console.log("stopping loop...");
+        this.intervalService.clearIntervals();
+    }
+
+    public goIntoChat(chatPartnerName : string) {
+        this.contextService.currentChatUsername = chatPartnerName;
         console.log("stopping loop...");
         this.intervalService.clearIntervals();
     }

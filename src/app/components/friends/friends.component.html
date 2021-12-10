@@ -7,8 +7,8 @@
     <div class="containerBox containerFriends">
         <ul class="friendsList">
             <li class="friend">
-                <p *ngFor="let f of this.displayedFriendArray" class="friendContainer">
-                    <a [routerLink]="['/chat']" (click)="stopLoop()"><span class="friendName">{{ f.username }}</span> <span class="newMessages"> {{ f.unreadMessages }} </span></a>
+                <p *ngFor="let f of this.displayedFriendArray, let i = index" class="friendContainer">
+                    <a [routerLink]="['/chat']" (click)="goIntoChat(f.username)"><span class="friendName">{{ f.username }}</span> <span class="newMessages"> {{ f.unreadMessages }} </span></a>
                 </p>
             </li>
         </ul>
@@ -17,7 +17,7 @@
     <h2>New Requests</h2>
     <ol>
         <li *ngFor="let f of this.displayedRequests">
-            <a [routerLink]="['/chat']" (click)="stopLoop()">Friend request from <strong>{{ f.username }}</strong></a>
+            <a>Friend request from <strong>{{ f.username }}</strong></a>
             <button class="friendButton" (click)="acceptFriend(f.username)">Accept</button>
             <button class="friendButton" (click)="dismissFriend(f.username)">Decline</button>
         </li>
@@ -27,4 +27,5 @@
     <button type="submit" class="formButton" (click)="sendFriendRequest()">
         Add
     </button>
+
 </body>
