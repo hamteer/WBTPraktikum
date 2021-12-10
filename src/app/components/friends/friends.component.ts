@@ -143,4 +143,9 @@ export class FriendsComponent implements OnInit {
                 }
             })
     }
+
+    public stopLoop() {
+        console.log("stopping loop...");
+        this.intervalService.clearIntervals();
+    }
 }
