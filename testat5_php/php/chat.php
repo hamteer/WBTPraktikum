@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+    require 'start.php';
+?>
 <head>
     <title>Chat</title>
     <meta name="viewport" charset="UTF-8"

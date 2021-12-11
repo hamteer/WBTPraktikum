@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+    require 'start.php';
+?>
 <head>
     <title>Login</title>
     <meta name="viewport" charset="UTF-8"
