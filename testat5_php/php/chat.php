@@ -16,9 +16,9 @@
 
 <body>
     <h1>Chat with Tom</h1>
-    <a href="friends.html"> &lt; Back </a> |
-    <a href="profile.html"> Profile </a>|
-    <a href="friends.html" class="dangerLink"> Remove Friend </a>
+    <a href="friends.php"> &lt; Back </a> |
+    <a href="profile.php"> Profile </a>|
+    <a href="friends.php" class="dangerLink"> Remove Friend </a>
 
     <!--Nachrichten-->
     <hr>

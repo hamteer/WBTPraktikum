@@ -16,7 +16,7 @@
 <body>
     <h2>Profile of Tom</h2>
     <p>
-        <a href="chat.html">&lt; Back to Chat</a> | <a href="friends.html" class="dangerLink">Remove Friend</a>
+        <a href="chat.php">&lt; Back to Chat</a> | <a href="friends.php" class="dangerLink">Remove Friend</a>
     </p>
 
     <div class="profile">

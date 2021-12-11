@@ -64,8 +64,8 @@
                     and message in separated line</label>
             </p>
         </fieldset>
-        <button class="formButton" type="reset"><a href="friends.html" class="buttonLink">Cancel</a></button>
-        <button class="submitButton" type="submit"><a href="settings.html" class="buttonLink">Save</a></button>
+        <button class="formButton" type="reset"><a href="friends.php" class="buttonLink">Cancel</a></button>
+        <button class="submitButton" type="submit"><a href="settings.php" class="buttonLink">Save</a></button>
     </form>
 </body>
 

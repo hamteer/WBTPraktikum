@@ -22,7 +22,7 @@
 <body onload="loadUsers()">
     <h1>Friends</h1>
     <p>
-        <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
+        <a href="logout.php">&lt; Logout</a> | <a href="settings.php">Settings</a>
     </p>
     <hr>
     <div class="containerBox">
@@ -75,7 +75,7 @@
     <hr>
     <h2>New Requests</h2>
     <ol>
-        <li><a href="chat.html">Friend request from <strong>Track</strong></a></li>
+        <li><a href="chat.php">Friend request from <strong>Track</strong></a></li>
     </ol>
     <hr>
     <form class="singleTextForm">
@@ -86,35 +86,3 @@
 </body>
 
 </html>
-
-<!--
-        <div class="friend">
-            <div class="chatName">
-                <a class="chatLink" href="chat.html">Tom</a> 
-            </div>
-            <div class="chatSymbol">
-                3
-            </div>
-        </div>
-        <div class="friend">
-            <div class="chatName">
-                <a class="chatLink" href="chat.html">Marvin</a> 
-            </div>
-            <div class="chatSymbol">
-                1
-            </div>
-        </div>
-        <div class="friend">
-            <div class="chatName">
-                <a class="chatLink" href="chat.html">Tick</a> 
-            </div>
-
-        </div>
-        <div class="friend">
-            <div class="chatName">
-                <a class="chatLink" href="chat.html">Trick</a> 
-            </div>
-
-        </div>
-
--->

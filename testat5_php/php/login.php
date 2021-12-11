@@ -21,7 +21,7 @@
     </div>
     <h1>Please sign in</h1>
 
-    <form action="friends.html" method="GET" class="dottedForm logRegBox">
+    <form action="friends.php" method="GET" class="dottedForm logRegBox">
         <fieldset>
             <legend>Login</legend>
             <table>
@@ -44,7 +44,7 @@
             </table>
         </fieldset>
         <div class="centerBox">
-            <button class="formButton"><a href="register.html" class="buttonLink">Register</a></button>
+            <button class="formButton"><a href="register.php" class="buttonLink">Register</a></button>
             <button class="submitButton" type="submit">Login</button>
         </div>
     </form>

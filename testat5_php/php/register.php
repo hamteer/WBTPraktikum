@@ -20,7 +20,7 @@
         <img src="../images/user.png" alt="logo" width="85" height="85">
     </div>
     <h1>Register yourself</h1>
-    <form action="friends.html" method="post" class="logRegBox">
+    <form action="friends.php" method="post" class="logRegBox">
         <fieldset>
             <legend>Register</legend>
             <table>
@@ -52,8 +52,8 @@
         </fieldset>
     </form>
     <div class="centerBox">
-        <button class="formButton" type="reset"><a href="login.html" class="buttonLink">Cancel</a></button>
-        <button class="submitButton" type="submit"><a href="friends.html" class="buttonLink">Create Account</a></button>
+        <button class="formButton" type="reset"><a href="login.php" class="buttonLink">Cancel</a></button>
+        <button class="submitButton" type="submit"><a href="friends.php" class="buttonLink">Create Account</a></button>
     </div>
     
     <script src="../js/registerCheck.js"></script>
