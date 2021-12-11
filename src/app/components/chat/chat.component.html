@@ -1,0 +1,36 @@
+<body>
+<h1>Chat with {{this.otherUserName}}</h1>
+<a  (click)="goBack()"> &lt; Back </a> |
+<a (click)="goToProfile()"> Profile </a>|
+<a (click)="removeFriend()" class="dangerLink"> Remove Friend </a>
+
+<!--Nachrichten-->
+<hr>
+<fieldset class="containerBox chatContainer">
+    <ul class="chat" id="chatList" *ngIf="this.layout === 'oneliner'">
+        <li class="message">
+            <p class="messageContainer"   *ngFor="let f of this.msgArr, let i = index" >
+                <span class="chatName">{{f.from}}: </span>
+                <span class="chatMessage">{{f.msg}}</span>
+                <span class="chatTimestamp">{{this.timeConverter(f.time)}}</span>
+            </p>
+        </li>
+    </ul>
+    <ul class="chat" id="chatList" *ngIf="this.layout === 'separated'">
+        <li class="message">
+            <p class="messageContainer"   *ngFor="let f of this.msgArr, let i = index" >
+                <span class="chatName">{{f.from}}: </span>
+                <span class="chatTimestamp">{{this.timeConverter(f.time)}}</span> 
+                <br>
+                <span class="separatedMsg">{{f.msg}}</span>
+            </p>
+        </li>
+    </ul>
+</fieldset>
+<hr>
+<input type="text" placeholder="New Message" class="formText" id="inputMsg" name="message" [(ngModel)]="msg">
+<button class="formButton" id="sendBtn" (click)="send()">
+    Send
+</button> 
+<br>
+</body>
