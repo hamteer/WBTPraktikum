@@ -1,0 +1,66 @@
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.dangerLink {
+    color: red;
+}
+
+dt {
+    font-weight: bold;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+fieldset {
+    border-style: dotted;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.profile {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.profileBox {
+    border: 1px solid #e1e1e1;
+    display: inline;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: auto;
+    width: 65%;
+    height: auto;
+}
+
+div.profilePic {
+    display: inline;
+    width: 30%;
+}
+
+div.profilePic > img {
+    width: 265px;
+    height: 265px;
+}
+
+@media (max-width: 276px){
+    .profileBox {
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+@media (max-width: 276px) {
+    div.profilePic > img {
+        width: 100%;
+        height: auto;
+    }
+}
