@@ -26,6 +26,11 @@
         } 
     }
 
+    // remove Friend
+    if(isset($_POST['friendRemoved'])) {
+        $removeFriend = new Friend($_POST['friendRemoved']);
+        $service->friendRemove($removeFriend);
+    }
     
     // Accept/Dismiss handling
     $errMsg = "";
