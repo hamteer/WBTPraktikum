@@ -2,6 +2,23 @@
 <html>
 <?php
     require 'start.php';
+    $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+
+    // test if session variable user is set
+    // if not, back to login!
+
+    if(!isset($_SESSION["user"])) {
+        header("Location: login.php");
+    }
+
+    // is a username specified in query?
+    if(!isset($_GET["username"])) {
+        // no -> back to friend list!
+        header("Location: friends.php");
+    } else {
+        // yes _> load user according to query parameter
+        $lookedAtUser = $service->loadUser($_GET["username"]);
+    }
 ?>
 <head>
     <title>Profile</title>
@@ -16,7 +33,7 @@
 </head>
 
 <body>
-    <h2>Profile of Tom</h2>
+    <h2>Profile of <?php echo $lookedAtUser->getUsername() ?></h2>
     <p>
         <a href="chat.php">&lt; Back to Chat</a> | <a href="friends.php" class="dangerLink">Remove Friend</a>
     </p>
@@ -29,20 +46,27 @@
 
         <fieldset class="profileBox">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                officia deserunt mollit anim id est laborum.
+                <?php echo $lookedAtUser->getDescription() ?>
             </p>
             <p>
             <dl>
                 <dt>Coffee or Tea?</dt>
-                <dd>Tea</dd>
+                <dd>
+                    <?php
+                    switch($lookedAtUser->getCoffeeOrTea()) {
+                        case "1":
+                            echo "Neither nor";
+                            break;
+                        case "2":
+                            echo "Coffee";
+                            break;
+                        case "3":
+                            echo "Tea";
+                            break;        
+                    }?>
+                </dd>
                 <dt>Name</dt>
-                <dd>Thomas</dd>
+                <dd><?php echo $lookedAtUser->getFirstName() . " " . $lookedAtUser->getLastName()?></dd>
             </dl>
             </p>
         </fieldset>

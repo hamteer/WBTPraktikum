@@ -2,7 +2,33 @@
 <html>
 <?php
     require 'start.php';
+    $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+
+    // test if session variable user is set
+    // if not, back to login!
+
+    if(!isset($_SESSION["user"])) {
+        header("Location: login.php");
+    }
+
+    // Load current user:
+    $currentUser = $service->loadUser($_SESSION["user"]);
+
+    // process form inputs:
+    if(isset($_POST["firstName"])) { $currentUser->setFirstName($_POST["firstName"]); }
+
+    if(isset($_POST["lastName"])) { $currentUser->setLastName($_POST["lastName"]); }
+
+    if(isset($_POST["coffeeOrTea"])) { $currentUser->setCoffeeOrTea($_POST["coffeeOrTea"]); }
+
+    if(isset($_POST["description"])) { $currentUser->setDescription($_POST["description"]); }
+
+    if(isset($_POST["layout"])) { $currentUser->setLayout($_POST["layout"]); }
+
+    // save user
+    $service->saveUser($currentUser);
 ?>
+
 <head>
     <title>Settings</title>
     <meta name="viewport" charset="UTF-8"
@@ -17,7 +43,7 @@
 
 <body>
     <h1>Profile Settings</h1>
-    <form>
+    <form action="settings.php" method="POST">
         <fieldset>
             <legend>Base Data</legend>
             <table>
@@ -26,7 +52,7 @@
                         <label for="firstName">First Name</label>
                     </td>
                     <td>
-                        <input id="firstName" type="text">
+                        <input name="firstName" id="firstName" type="text" value="<?= $currentUser->getFirstName(); ?>">
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +60,7 @@
                         <label for="lastName">Last Name</label>
                     </td>
                     <td>
-                        <input id="lastName" type="text">
+                        <input name="lastName" id="lastName" type="text" value="<?= $currentUser->getLastName(); ?>">
                     </td>
                 </tr>
                 <tr>
@@ -42,10 +68,10 @@
                         <label for="coffeOrTea">Coffee or Tea?</label>
                     </td>
                     <td>
-                        <select name="drink" id="drink">
-                            <option value="Neither nor">Neither nor</option>
-                            <option value="Coffee">Coffee</option>
-                            <option value="Tea">Tea</option>
+                        <select name="coffeeOrTea" id="drink">
+                            <option value="1" <?php if ($currentUser->getCoffeeOrTea() == '1') echo ' selected="selected"'; ?>>Neither nor</option>
+                            <option value="2" <?php if ($currentUser->getCoffeeOrTea() == '2') echo ' selected="selected"'; ?>>Coffee</option>
+                            <option value="3" <?php if ($currentUser->getCoffeeOrTea() == '3') echo ' selected="selected"'; ?>>Tea</option>
                         </select>
                     </td>
                 </tr>
@@ -53,21 +79,21 @@
         </fieldset>
         <fieldset>
             <legend>Tell Something About You</legend>
-            <textarea name="Comment" id="Comment" rows="10" placeholder="Leave a comment here"></textarea>
+            <textarea name="description" id="Comment" rows="10"><?= $currentUser->getDescription(); ?></textarea>
         </fieldset>
-        <fieldset>
+        <fieldset name="layout">
             <legend>Preferred Chat Layout</legend>
             <p>
-                <input type="radio" id="oneline" name="username" value="oneliner"> <label for="oneline">Username and
-                    message in one line</label>
+                <input type="radio" id="1" name="layout" value="1" <?php if ($currentUser->getLayout() == '1') echo ' checked '; ?>> 
+                    <label for="1">Username and message in one line</label>
             </p>
             <p>
-                <input type="radio" id="separated" name="username" value="separated"> <label for="separated">Username
-                    and message in separated line</label>
+                <input type="radio" id="2" name="layout" value="2" <?php if ($currentUser->getLayout() == '2') echo ' checked '; ?>> 
+                    <label for="2">Username and message in separated line</label>
             </p>
         </fieldset>
         <button class="formButton" type="reset"><a href="friends.php" class="buttonLink">Cancel</a></button>
-        <button class="submitButton" type="submit"><a href="settings.php" class="buttonLink">Save</a></button>
+        <button class="submitButton" type="submit">Save</button>
     </form>
 </body>
 
