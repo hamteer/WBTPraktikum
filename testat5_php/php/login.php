@@ -1,8 +1,32 @@
+<?php
+    
+    require 'start.php';
+    $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+    $username = "";
+    $password = "";
+    $errMsg = "";
+    if (isset($_SESSION['user'])) {
+        header('location: friends.php');
+        exit();
+    }
+    
+
+    if(isset($_POST['username'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if($service->login($username, $password)) {
+            $errMsg = "";
+            $_SESSION['user'] = $username;
+            header('location: friends.php');
+            exit();
+        } else {
+            $errMsg = "Authentication failed!";
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html>
-<?php
-    require 'start.php';
-?>
 <head>
     <title>Login</title>
     <meta name="viewport" charset="UTF-8"
@@ -22,8 +46,8 @@
         <img src="..\images\chat.png" alt="chat.png" width='90' height='90'>
     </div>
     <h1>Please sign in</h1>
-
-    <form action="friends.php" method="GET" class="dottedForm logRegBox">
+    <div class="dangerLink centerBox"><?=$errMsg?></div>
+    <form action="login.php" method="POST" class="dottedForm logRegBox">
         <fieldset>
             <legend>Login</legend>
             <table>
@@ -32,7 +56,9 @@
                         <label for="usernameFeld">Username</label>
                     </td>
                     <td>
-                        <input type="text" id="usernameFeld" placeholder="Username" required>
+                        <input  name="username" 
+                                type="text" id="usernameFeld" placeholder="Username"  
+                                required>
                     </td>
                 </tr>
                 <tr>
@@ -40,13 +66,17 @@
                         <label for="passwordFeld">Password</label>
                     </td>
                     <td>
-                        <input type="password" id="passwordFeld" placeholder="Password" required>
+                        <input  name="password"
+                                type="password" id="passwordFeld" placeholder="Password" 
+                                required>
                     </td>
                 </tr>
             </table>
         </fieldset>
         <div class="centerBox">
-            <button class="formButton"><a href="register.php" class="buttonLink">Register</a></button>
+            <button class="formButton">
+                <a href="register.php" class="buttonLink">Register</a>
+            </button>
             <button class="submitButton" type="submit">Login</button>
         </div>
     </form>
