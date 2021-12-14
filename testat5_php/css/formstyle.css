@@ -48,6 +48,17 @@ dt {
     font-weight: bold;
 }
 
+.requestContainer {
+    width: 100%;
+    box-sizing: border-box;
+}
 
+
+.requestBtn {
+    float: right;
+    margin-left: 3px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
 
 
