@@ -1,5 +1,7 @@
 <?php
     require 'start.php';
+    use Model\User;
+    use Model\Friend;
     
     if (!isset($_SESSION['user'])) {
         header('location: login.php');
@@ -14,7 +16,7 @@
     $errFriendRequest = "";
     if(isset($_POST['addFriend'])) {
         $errFriendRequest = "";
-        $newFriend = $service->loadUser($_POST['addFriend']);
+        $newFriend = new Friend($_POST['addFriend']);
         if($service->friendRequest($newFriend)) {
             unset($_POST['addFriend']);
             $errFriendRequest = "";
@@ -32,7 +34,7 @@
         $control = explode(':', $_POST['actionRequest']);
 
         $action = $control[1];
-        $targetUser = $service->loadUser($control[0]);
+        $targetUser = new Friend($control[0]);
         if($action === "accept") {
             // accept friend
             $targetUser->setAccepted();
@@ -44,9 +46,9 @@
         }
     }
     
-    // sortiere aus der Friendslist requests in $userRequest und Freunde in $friends
+    // sort users in arrays
     $userList = $service->loadFriends();
-    
+    //var_dump($userList);
     $userRequests = array();
     $friends = array(); 
     foreach($userList as $user) {
