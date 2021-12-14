@@ -2,6 +2,7 @@
 <html>
 <?php
     require 'start.php';
+    session_unset();
 ?>
 <head>
     <title>Logout</title>
