@@ -2,7 +2,7 @@
 namespace Model;
 use jsonSerializable;
 
-class Friend implements JsonSerializable {
+class Friend implements JsonSerializable{
     private $username;
     private $status;
 
@@ -23,6 +23,15 @@ class Friend implements JsonSerializable {
 
     public function getStatus() {
         return $this->status;
+    }
+
+    
+    public function setAccepted() {
+        $this->status = "accepted";
+    }
+
+    public function setDismissed() {
+        $this->status = "dismissed";
     }
 
     public static function fromJson($data) {
