@@ -44,7 +44,7 @@
         }
     }
     
-    // sort users in arrays
+    // sortiere aus der Friendslist requests in $userRequest und Freunde in $friends
     $userList = $service->loadFriends();
     
     $userRequests = array();
