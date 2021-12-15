@@ -56,7 +56,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.router.navigate(['/login']);
                 } else {
                     this.myUser = user;
-                    this.layout = user.layout;
+                    this.layout = user.layout ? user.layout:'oneliner';
                     console.log(this.layout);
 
                 }
