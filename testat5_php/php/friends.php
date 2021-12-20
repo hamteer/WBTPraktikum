@@ -11,7 +11,6 @@
 
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
     
-    
     // prüfe ob der aktuelle User eine Freundschaftsanfrage gesendet hat
     $errFriendRequest = "";
     if(isset($_POST['addFriend'])) {
@@ -107,7 +106,7 @@
                             <?= $friend->getUsername()?>
                         </span>
                         <span class="newMessages">
-                            <?=$service->getUnread($friend->getUsername())?>
+                        <?=$service->getUnread()->{$friend->getUsername()}?>
                         </span>
                     </p>
                 </li>
