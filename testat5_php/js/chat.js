@@ -1,8 +1,42 @@
+
+
 const sendBtn = document.getElementById("sendBtn");
 // get ul element for append
 const ul = document.getElementById("chatList");
 // get message from text input
 const msgInput = document.getElementById("inputMsg");
+
+const chatPartner = "";
+const token = "";
+
+function removeFriend(chatpartner) {
+    const li = document.getElementById("chatList");
+    const form = document.createElement("form");
+    form.setAttribute("action", "friends.php");
+    form.setAttribute("method", "get");
+    const input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("value", chatpartner);
+    input.setAttribute("name", "removeFriend");
+    form.appendChild(input);
+    li.appendChild(form);
+    form.submit();
+}
+
+function goProfile(chatpartner) {
+    const li = document.getElementById("chatList");
+    const form = document.createElement("form");
+    form.setAttribute("action", "profile.php");
+    form.setAttribute("method", "get");
+    const input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("value", chatpartner);
+    input.setAttribute("name", "username");
+    form.appendChild(input);
+    li.appendChild(form);
+    form.submit();
+}
+
 
 //
 // create all necessary elements for one Message
@@ -35,7 +69,9 @@ function createMessageElementinChat(msgTxt, sender, time) {
     // ul append complete Message
     ul.appendChild(li);
 }
-
+function test (test) {
+    console.log(test);
+}
 
 
 //
@@ -47,13 +83,14 @@ function getAndProcessData() {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             let data = JSON.parse(xmlhttp.responseText);
+            console.log(data);
             let length = data.length;
             clearList();
             processData(data, length);
         }
     }
-    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/b5eb31e8-e269-4c8a-9c86-e99c3a992f51/message/Jerry", true);
-    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2NjU0MzMwfQ.t0AIqQIzxGgIqhPMPUCIFZiiTQE1BpPJEkEe8YsmxSY');
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/56ce2af0-ee84-4e78-85bc-6bba6c51c739/message/" + this.chatPartner, true);
+    xmlhttp.setRequestHeader('Authorization', 'Bearer ' + this.token);
     xmlhttp.send();
 }
 
@@ -100,16 +137,16 @@ function sendMessage() {
             }
         };
     
-        xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/b5eb31e8-e269-4c8a-9c86-e99c3a992f51/message", true);
+        xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/56ce2af0-ee84-4e78-85bc-6bba6c51c739/message/", true);
         xmlhttp.setRequestHeader('Content-type', 'application/json');
-        // Add token, e. g., from Jerry because we are sending it to Tom
-        xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmVycnkiLCJpYXQiOjE2MzY2NTQzMzB9.4bbvYgnUfMbmMSyk50LlgVR-2mNPF5db9khiP_SZ5hM');
+        //Add token, e. g., from Jerry because we are sending it to Tom
+        xmlhttp.setRequestHeader('Authorization', 'Bearer ' + this.token);
 
         //prepare message-package
         let data = {
             // get message value from msg-element declarated at the top of the file
             message: msgInput.value,
-            to: "Tom"
+            to: this.chatPartner
         };
 
         // create a JSON-String
@@ -124,11 +161,31 @@ function sendMessage() {
 //  event handling
 //
 // handling button click event
+/*
 sendBtn.addEventListener("click", function () {
         sendMessage();
         updateWindow();
         msgInput.value = "";
 });
+*/
+
+function send(chatPartner, token) {
+    this.chatPartner = chatPartner;
+    this.token = token;
+    console.log(token);
+    console.log("test");
+    sendMessage();
+    updateWindow();
+    msgInput.value = "";
+}
+
+function loadPage(chatPartner, token) {
+    
+    this.chatPartner = chatPartner;
+    this.token = token;
+    updateWindow();
+}
+/*
 // handling 'enter'-pressed in message input
 msgInput.addEventListener("keypress", function(e) {
     if (e.key == 'Enter') {
@@ -137,6 +194,7 @@ msgInput.addEventListener("keypress", function(e) {
         msgInput.value = "";
     }
 });
+*/
 
 //
 //  update window
@@ -147,10 +205,4 @@ function updateWindow(){
     getAndProcessData();
 }
 
-updateWindow();
-
-
-
-
-
-
+//updateWindow();

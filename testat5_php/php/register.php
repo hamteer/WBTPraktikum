@@ -4,6 +4,7 @@
     require 'start.php';
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
     $warning = "";
+    $globalUsername = "";
 
     //var_dump($_POST);
  
@@ -13,6 +14,7 @@
         $password = $_POST["password"];
         $confirmPassword = $_POST["confirmPassword"];
         if($service->register($username, $password)) {
+            $_SESSION['user'] = $username;
             header("Location: friends.php");
             //echo "hat geklappt";
             exit();
@@ -25,10 +27,12 @@
         //username
         global $service;
         global $warning;
+        global $globalUsername;
 
         if(isset($_POST["username"])) {
             if(!empty($_POST["username"])) {
                 $username = $_POST["username"];
+                $globalUsername = $username;
                 //echo $username;
                 if (strlen($username) > 2 ) {
                    //echo "valid username";
@@ -53,7 +57,7 @@
             }
         }else {
             //echo "kein usernamen übergeben";
-            $warning = "kein usernamen übergeben";
+            $warning = "no Username passed";
         }
 
         //password
@@ -121,7 +125,7 @@
                         <label for="username">Username</label>
                     </td>
                     <td>
-                        <input id="username" type="text" name="username" placeholder="Username" required>
+                        <input id="username" type="text" name="username" placeholder="Username" required value="<?= $globalUsername; ?>">
                         
                         
                     </td>
@@ -155,7 +159,7 @@
             </table>
         </fieldset>
         <div class="centerBox">
-            <button class="formButton" type="reset" value="cancel">Cancel</button>
+            <button class="formButton" type="reset" value="cancel"><a href="login.php" class="buttonLink">Cancel</a></button>
             <button class="submitButton" type="submit" name="action" value="create">Create Account</button>
         </div>
     </form>
