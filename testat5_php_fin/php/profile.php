@@ -35,10 +35,10 @@
 <body>
     <h2>Profile of <?php echo $lookedAtUser->getUsername() ?></h2>
     <p>
-        <a href="chat.php">&lt; Back to Chat</a> | <a href="friends.php" class="dangerLink">Remove Friend</a>
+        <a href="chat.php">&lt; Back to Chat</a> | <span type="submit" onclick="removeFriend('<?= $lookedAtUser->getUsername() ?>')"><a class="dangerLink"> Remove Friend</a></span>
     </p>
 
-    <div class="profile">
+    <div class="profile" id="profile">
         <div class="profilePic">
             <img src="..\images\profile.png" alt="profile.png">
         </div>
@@ -71,6 +71,8 @@
             </p>
         </fieldset>
     </div>
+
+    <script type="text/javascript" src="../js/profile.js"></script>
 
 </body>
 
