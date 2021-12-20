@@ -1,0 +1,52 @@
+
+@media (max-width: 900px) {
+    .singleTextForm > .formText {
+        box-sizing: border-box;
+        margin: 0 0 3px 0;
+        width: 100%;
+    }
+
+    form > fieldset > table {
+        box-sizing: border-box;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    form > fieldset > table > tbody > tr > td {
+        display: block;
+    }
+
+    form > fieldset > table > tbody > tr > td > * {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .logRegBox {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /*
+    .centerBox {
+        text-align: center;
+        width: 100%;
+    }
+    */
+    .formButton, .submitButton {
+        margin-bottom: 3px;
+        width: 100%;
+    }
+    
+    .requestBtn {
+        float: none;
+        display: block;
+    }
+
+}
+
+@media (max-width: 276px) {
+    div.profilePic > img {
+        width: 100%;
+        height: auto;
+    }
+}
