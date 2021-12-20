@@ -92,14 +92,16 @@ export class FriendsComponent implements OnInit {
         // first, reload friends and messages
         // then, check if array size, usernames and unread messages are unchanged
         //  -> if not, set display values
+        this.setDisplayedArrays();
+
         this.backendService.loadFriends()
             .then((newFriendsArray) => {
                 if (newFriendsArray.length == this.loadedFriendsArray.length) {
-                    console.log("no changes in friends and/or requests recognized.");
+                    //console.log("no changes in friends and/or requests recognized.");
                 } else {
                     this.loadFriendsAndRequests();
                     this.setDisplayedArrays();
-                    console.log("changes in array length detected - arrays overwritten")
+                    //console.log("changes in array length detected - arrays overwritten")
                 }
 
                 // check if usernames and status are consistent with before
@@ -107,7 +109,7 @@ export class FriendsComponent implements OnInit {
                     if (newFriendsArray[f].username != this.loadedFriendsArray[f].username || newFriendsArray[f].status != this.loadedFriendsArray[f].status) {
                         this.loadFriendsAndRequests();
                         this.setDisplayedArrays();
-                        console.log("changes in usernames or status detected - arrays overwritten")
+                        //console.log("changes in usernames or status detected - arrays overwritten")
                     }
                 }
             })
@@ -119,7 +121,7 @@ export class FriendsComponent implements OnInit {
                     if (f.unreadMessages != loadedMsgMap.get(f.username)) {
                         this.loadFriendsAndRequests();
                         this.setDisplayedArrays();
-                        console.log("changes in unread messages detected - arrays overwritten")
+                        //console.log("changes in unread messages detected - arrays overwritten")
                     }
                 }
             })
