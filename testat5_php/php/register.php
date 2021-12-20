@@ -57,7 +57,7 @@
             }
         }else {
             //echo "kein usernamen übergeben";
-            $warning = "no Username passed";
+            //$warning = "no Username passed";
         }
 
         //password
