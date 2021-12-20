@@ -106,7 +106,7 @@ class BackendService {
 
     public function friendRemove($friend) {
         try {
-            HttpClient::delete($this->base . '/' . $this->id . '/' . 'friend' . '/' . $friend->getUsername() , $friend, $_SESSION['chat_token']);
+            HttpClient::delete($this->base . '/' . $this->id . '/' . 'friend' . '/' . $friend->getUsername() , $_SESSION['chat_token']);
             return true;
         } catch(\Exception $e) {
             error_log($e);
