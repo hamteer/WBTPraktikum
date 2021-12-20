@@ -124,9 +124,9 @@ class BackendService {
         return false;
     }
 
-    public function getUnread($friend) {
+    public function getUnread() {
         try {
-            return HttpClient::get($this->base . '/' . $this->id . '/unread' , $friend, $_SESSION['chat_token']);
+            return HttpClient::get($this->base . '/' . $this->id . '/unread' , $_SESSION['chat_token']);
         } catch(\Exception $e) {
             error_log($e);
         }
