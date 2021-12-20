@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 0);
 spl_autoload_register(function($class) {
     include str_replace('\\', '/', $class) . '.php';
 });
