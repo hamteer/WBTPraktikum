@@ -11,7 +11,7 @@
 
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
     
-    // prüfe ob der aktuelle User eine Freundschaftsanfrage gesendet hat
+    // check if user made a request
     $errFriendRequest = "";
     if(isset($_POST['addFriend'])) {
         $errFriendRequest = "";
@@ -34,7 +34,7 @@
     // Accept/Dismiss handling
     $errMsg = "";
     if(isset($_POST['actionRequest'])) {
-        // speichert auf [0] den Username und auf [1] die Aktion
+        // [0] Username, [1] action
         $control = explode(':', $_POST['actionRequest']);
 
         $action = $control[1];
@@ -85,7 +85,7 @@
     </script>
 </head>
 
-<body onload="">
+<body>
     <h1>Friends</h1>
     <p>
         <a href="logout.php">&lt; Logout</a> | <a href="settings.php">Settings</a>
@@ -94,7 +94,7 @@
     <div class="containerBox">
         <ul class="friendsList"  id="chatList">
 <?php
-    // erstelle die Liste wenn Freunde vorhanden sind
+    // show fiends if you have friends 
     if(sizeof($friends) != 0) {
         foreach($friends as $friend) {
             if($friend->{'status'} === "accepted") {
@@ -106,14 +106,19 @@
                             <?= $friend->getUsername()?>
                         </span>
                         <span class="newMessages">
-                        <?=$service->getUnread()->{$friend->getUsername()}?>
+<?php
+                    // show unread msg only if you have some unread msg
+                    if($service->getUnread()->{$friend->getUsername()} > 0) {
+                        echo $service->getUnread()->{$friend->getUsername()};
+                    }
+?>                        
                         </span>
                     </p>
                 </li>
 <?php
             }
         }
-    // wenn keine Freunde in $friends vorhanden sind gib folgendes aus
+    // if you have no friends print this...
     } else {
 ?>
                 <li class="friend">
@@ -128,7 +133,7 @@
     </div>
 
 <?php
-    // wenn Freundschaftsanfragen vorhanden sind gib die Liste aus
+    // print list of friendrequests if some exists
     if(sizeof($userRequests) != 0) {
 ?>
         <hr>
@@ -162,13 +167,22 @@
     <hr>
     <div class="dangerLink"><?=$errFriendRequest?></div>
     <form action="friends.php" method="POST" class="singleTextForm">
+<?php
+    // set current Input for refreshing the page
+    if(isset($_POST['curInput'])) {
+        $curInput = $_POST['curInput'];
+    } else {
+        $curInput = "";
+    }
+?>
         <input  name="addFriend" type="text" id="addFriendFeld" placeholder="Add Friend to List" 
-                list="userList" class="formText" autocomplete="off">
-        <button name="action" type="submit" class="submitButton">Add</button>
+                list="userList" class="formText" autocomplete="off" value="<?=$curInput?>">
+
+            <button name="action" type="submit" class="submitButton">Add</button>
         <datalist id="userList"></datalist>
     </form>
 
-    <script src="..\js\friends.js"></script>
+    <script src="..\js\friendsScript.js"></script>
 </body>
 
 </html>
